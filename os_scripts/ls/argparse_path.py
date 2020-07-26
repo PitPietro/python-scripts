@@ -9,7 +9,11 @@ import sys
 def ls():
     # create the parser
     my_parser = argparse.ArgumentParser(
-        description='List the content of a folder'
+        prog='ls',
+        usage='%(prog)s [OPTION] PATH',
+        description='List the content of a folder.',
+        epilog='For more information visit <https://pitpietro.github.io/>',
+        # prefix_chars='+'
     )
 
     # add the arguments
