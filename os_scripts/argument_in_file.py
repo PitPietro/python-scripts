@@ -4,7 +4,7 @@
 import argparse
 
 
-def ls():
+def arg_in_file():
     my_parser = argparse.ArgumentParser(fromfile_prefix_chars='@')
     my_parser.add_argument('d', help='the day of the meeting')
     my_parser.add_argument('s', help='the start time for the meeting')
@@ -23,4 +23,4 @@ def ls():
           .format(args.d, args.s, args.e, args.r, args.c))
 
 
-ls()
+arg_in_file()
