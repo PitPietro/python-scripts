@@ -16,6 +16,13 @@ def ls():
         # prefix_chars='+'
     )
 
+    my_parser.add_argument(
+        '-l',
+        '--long',
+        action='store_true',
+        help='enable the long listing format'
+    )
+
     # add the arguments
     my_parser.add_argument(
         'Path',
@@ -34,7 +41,13 @@ def ls():
         print('Not a valid path')
         sys.exit()
 
-    print('\n'.join(os.listdir(input_path)))
+    for line in os.listdir(input_path):
+        if args.long:
+            size = os.stat(os.path.join(input_path, line)).st_size
+            line = '%10d KB \t %s' % (size/1024, line)
+        print(line)
+        # else:
+        #     print('\n'.join(os.listdir(input_path)))
 
 
 ls()
