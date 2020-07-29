@@ -18,6 +18,7 @@ $ ./action_for_arg.py -a 'Pit' OR $ ./action_for_arg.py -a Pit
 > custom store action
 Use a class, that inherits from argparse.Action, to create a custom store action.
 ./action_for_arg.py -b 'Hello' OR $ ./action_for_arg.py -b Hello
+Set the values Hello for the -b option 
 {'a': None, 'b': 'Hello', 'c': None, 'd': False, 'e': True, 'f': None, 'g': None, 'j': None}
 
 > store_const
