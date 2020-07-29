@@ -10,7 +10,7 @@ Specify the how to store the value to the Namespace object:
 $ ./action_for_arg.py
 {'a': None, 'b': None, 'c': None, 'd': False, 'e': True, 'f': None, 'g': None, 'j': None}
 
-> store (default
+> store (default)
 Stores the value you pass without any further consideration.
 $ ./action_for_arg.py -a 'Pit' OR $ ./action_for_arg.py -a Pit
 {'a': 'Pit', 'b': None, 'c': None, 'd': False, 'e': True, 'f': None, 'g': None, 'j': None}
@@ -18,7 +18,7 @@ $ ./action_for_arg.py -a 'Pit' OR $ ./action_for_arg.py -a Pit
 > custom store action
 Use a class, that inherits from argparse.Action, to create a custom store action.
 ./action_for_arg.py -b 'Hello' OR $ ./action_for_arg.py -b Hello
-Set the values Hello for the -b option 
+Set the values Hello for the -b option.
 {'a': None, 'b': 'Hello', 'c': None, 'd': False, 'e': True, 'f': None, 'g': None, 'j': None}
 
 > store_const
@@ -92,7 +92,7 @@ def action():
             super(VerboseStore, self).__init__(option_strings, dest, **kwargs)
 
         def __call__(self, parser, namespace, values, option_string=None):
-            print('Set the values {} for the {} option'.format(values, option_string))
+            print('Set the values {} for the {} option.'.format(values, option_string))
             setattr(namespace, self.dest, values)
 
     my_parser = argparse.ArgumentParser()
