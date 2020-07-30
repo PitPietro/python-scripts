@@ -23,7 +23,7 @@ def get_permission_mask(file_path):
     for i in list(oct_status):
         p_list.append(octal_to_string(int(i)))
 
-    p_str = p_list[0] + p_list[1] + p_list[2]
+    p_str = file_or_dir(file_path) + p_list[0] + p_list[1] + p_list[2]
     return p_str
 
 
@@ -50,6 +50,15 @@ def octal_to_string(num):
         return ''
 
 
+def file_or_dir(path):
+    if os.path.isfile(path):
+        return '-'
+    elif os.path.isdir(path):
+        return 'd'
+    else:
+        return ''
+
+
 if __name__ == '__main__':
-    msg = get_permission_mask('/home/pit/Documents/python_projects/python-scripts/os_scripts')
+    msg = get_permission_mask('/home/pit/Documents/python_projects/python-scripts/os_scripts/file_defs.py')
     print(msg)
