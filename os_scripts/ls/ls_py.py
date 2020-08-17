@@ -77,16 +77,14 @@ def ls():
         # prefix_chars='+'
     )
 
-    my_parser.add_argument(
-        '-l',
-        '--long',
-        action='store_true',
-        help='enable the long listing format'
-    )
+    my_parser.add_argument('-i', '-inode', action='store_true', help='show the index number for each file')
+    my_parser.add_argument('-l', '--long', action='store_true', help='enable the long listing format')
 
     # add the arguments
     my_parser.add_argument(
         'Path',
+        nargs='?',
+        default=os.getcwd(),
         metavar='path',
         type=str,
         help='the path to list'
@@ -104,6 +102,10 @@ def ls():
 
     for line in os.listdir(input_path):
         current_path = os.path.join(input_path, line)
+        line_str = ''
+        if args.i:
+            node = os.stat(current_path).st_ino
+            line_str += '{}\t'.format(node)
         if args.long:
             size = os.stat(current_path).st_size
             owner = getpwuid(os.stat(current_path).st_uid).pw_name
@@ -111,8 +113,9 @@ def ls():
             date_last_m = datetime.datetime.fromtimestamp(os.stat(current_path).st_mtime).strftime('%d/%m/%y %H:%M')
             permission = get_permission_mask(input_path)
             current_size = size/1024
-            line_str = '{}\t{}\t{}\t{:10.4f} KB\t{}\t{}'.format(
-                permission, owner, group, current_size, date_last_m, line)
+            line_str += '{}\t{}\t{}\t{:10.4f} KB\t{}\t'.format(
+                permission, owner, group, current_size, date_last_m)
+        line_str += '{}'.format(line)
         print(line_str)
 
 
