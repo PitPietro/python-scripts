@@ -107,12 +107,11 @@ def ls():
             node = os.stat(current_path).st_ino
             line_str += '{}\t'.format(node)
         if args.long:
-            size = os.estat(current_path).st_size
             owner = getpwuid(os.stat(current_path).st_uid).pw_name
             group = getgrgid(os.stat(current_path).st_gid).gr_name
             date_last_m = datetime.datetime.fromtimestamp(os.stat(current_path).st_mtime).strftime('%d/%m/%y %H:%M')
             permission = get_permission_mask(input_path)
-            current_size = size/1024
+            current_size = os.path.getsize(current_path)/1024
             line_str += '{}\t{}\t{}\t{:10.4f} KB\t{}\t'.format(
                 permission, owner, group, current_size, date_last_m)
         line_str += '{}'.format(line)
