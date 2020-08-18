@@ -60,5 +60,5 @@ def file_or_dir(path):
 
 
 if __name__ == '__main__':
-    msg = get_permission_mask('/home/pit/Documents/python_projects/python-scripts/os_scripts/file_defs.py')
+    msg = get_permission_mask('/os_scripts/nargs/file_defs.py')
     print(msg)

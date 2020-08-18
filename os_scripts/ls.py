@@ -107,7 +107,7 @@ def ls():
             node = os.stat(current_path).st_ino
             line_str += '{}\t'.format(node)
         if args.long:
-            size = os.stat(current_path).st_size
+            size = os.estat(current_path).st_size
             owner = getpwuid(os.stat(current_path).st_uid).pw_name
             group = getgrgid(os.stat(current_path).st_gid).gr_name
             date_last_m = datetime.datetime.fromtimestamp(os.stat(current_path).st_mtime).strftime('%d/%m/%y %H:%M')

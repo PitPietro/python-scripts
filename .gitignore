@@ -212,7 +212,7 @@ dmypy.json
 /web_scraper/selenium/aglio.py
 /web_scraper/selenium/a.txt
 other/
-/os_scripts/ls/ls_tests/ls_prog.txt
+/os_scripts/ls_tests/ls_prog.txt
 
 /text_to_speech/credential.txt
 *.mp3
