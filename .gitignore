@@ -211,7 +211,7 @@ dmypy.json
 
 /web_scraper/selenium/aglio.py
 /web_scraper/selenium/a.txt
-other/
+hidden_scripts/
 /os_scripts/ls_tests/ls_prog.txt
 
 /text_to_speech/credential.txt
