@@ -1,6 +1,10 @@
 from PIL import ImageGrab
+from datetime import datetime
 
 
 if __name__ == '__main__':
     image = ImageGrab.grab()
-    image.save('test.png')
+    now = datetime.now()
+    extension = '.png'
+    name = 'screen' + now.strftime('_%d-%m-%y_%H-%M-%S') + extension
+    image.save(name)
